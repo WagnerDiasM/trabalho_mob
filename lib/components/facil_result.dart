@@ -14,36 +14,64 @@ class FacilResultTitle extends StatelessWidget {
             width: 60,
             height: 30,
             decoration: BoxDecoration(
-              color: Colors.grey,
-              border:
-                  Border.all(color: const Color.fromRGBO(255, 255, 255, 0.8)),
+              color: Theme.of(context).primaryColor,
+              border: Border.all(
+                color: const Color.fromRGBO(255, 255, 255, 0.8),
+              ),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(5),
+                topRight: Radius.circular(5),
+              ),
             ),
-            child: const Text("Jogada",
-                style: TextStyle(fontWeight: FontWeight.bold)),
+            child: Text(
+              "Jogada",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.onPrimary),
+            ),
           ),
           Container(
             alignment: Alignment.center,
             width: 140,
             height: 30,
             decoration: BoxDecoration(
-              color: Colors.grey,
-              border:
-                  Border.all(color: const Color.fromRGBO(255, 255, 255, 0.8)),
+              color: Theme.of(context).primaryColor,
+              border: Border.all(
+                color: const Color.fromRGBO(255, 255, 255, 0.8),
+              ),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(5),
+                topRight: Radius.circular(5),
+              ),
             ),
-            child: const Text("Número proposto",
-                style: TextStyle(fontWeight: FontWeight.bold)),
+            child: Text(
+              "Número proposto",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.onPrimary),
+            ),
           ),
           Expanded(
             child: Container(
               alignment: Alignment.center,
               height: 30,
               decoration: BoxDecoration(
-                color: Colors.grey,
-                border:
-                    Border.all(color: const Color.fromRGBO(255, 255, 255, 0.8)),
+                color: Theme.of(context).primaryColor,
+                border: Border.all(
+                  color: const Color.fromRGBO(255, 255, 255, 0.8),
+                ),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(5),
+                  topRight: Radius.circular(5),
+                ),
               ),
-              child: const Text("Resultado",
-                  style: TextStyle(fontWeight: FontWeight.bold)),
+              child: Text(
+                "Resultado",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+              ),
             ),
           ),
         ],
@@ -76,39 +104,99 @@ class FacilResultItem extends StatelessWidget {
             width: 60,
             height: 50,
             decoration: BoxDecoration(
-              color: const Color.fromRGBO(0, 0, 0, 0.2),
-              border:
-                  Border.all(color: const Color.fromRGBO(255, 255, 255, 0.8)),
+              color: Theme.of(context).colorScheme.primaryContainer,
+              border: Border.all(
+                color: const Color.fromRGBO(255, 255, 255, 0.8),
+              ),
             ),
-            child: Text(jogada),
+            child: Text(
+              jogada,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+              ),
+            ),
           ),
           Container(
             alignment: Alignment.center,
             width: 140,
             height: 50,
             decoration: BoxDecoration(
-              color: const Color.fromRGBO(0, 0, 0, 0.2),
+              color: Theme.of(context).colorScheme.primaryContainer,
               border:
                   Border.all(color: const Color.fromRGBO(255, 255, 255, 0.8)),
             ),
-            child: Text(numeroProposto),
+            child: Text(
+              numeroProposto,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+              ),
+            ),
           ),
           Expanded(
             child: Container(
               height: 50,
               decoration: BoxDecoration(
-                color: const Color.fromRGBO(0, 0, 0, 0.2),
+                color: Theme.of(context).colorScheme.primaryContainer,
                 border:
                     Border.all(color: const Color.fromRGBO(255, 255, 255, 0.8)),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 3),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("$iguais A mesma posição"),
-                    Text("$posicaoDiferente Posição diferente"),
+                    Row(
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          width: 15,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: Colors.green.shade400,
+                            borderRadius: BorderRadius.circular(2),
+                          ),
+                          child: Text(iguais),
+                        ),
+                        const SizedBox(width: 3),
+                        Text(
+                          "Mesma posição",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onPrimaryContainer,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 3),
+                    Row(
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          width: 15,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: Colors.yellow.shade400,
+                            borderRadius: BorderRadius.circular(2),
+                          ),
+                          child: Text(posicaoDiferente),
+                        ),
+                        const SizedBox(width: 3),
+                        Text(
+                          "Posição diferente",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onPrimaryContainer,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
