@@ -31,7 +31,7 @@ class _BottomNavigationBarExampleState
     extends State<BottomNavigationBarExample> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    // Páginas para cada icone
+    // Páginas para cada ícone
     FacilPage(),
     MedioPage(),
     DificilPage(),
@@ -48,36 +48,36 @@ class _BottomNavigationBarExampleState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BottomNavigationBar Sample'),
+        title: const Text('Jogo sem nome'),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
+        items: <BottomNavigationBarItem>[
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: Colors.red,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            label: 'Fácil',
             backgroundColor: Colors.green,
           ),
           BottomNavigationBarItem(
+            icon: const Icon(Icons.business),
+            label: 'Médio',
+            backgroundColor: Colors.yellow[700],
+          ),
+          const BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'School',
-            backgroundColor: Colors.purple,
+            label: 'Difícil',
+            backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-            backgroundColor: Colors.pink,
+            icon: const Icon(Icons.settings),
+            label: 'Regras',
+            backgroundColor: Colors.grey[600],
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.black.withOpacity(0.8),
         onTap: _onItemTapped,
       ),
     );
