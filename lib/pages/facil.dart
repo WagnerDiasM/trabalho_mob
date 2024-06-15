@@ -1,4 +1,8 @@
+import 'dart:math';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:trabalho_mob/components/facil_result.dart';
 
 class FacilPage extends StatefulWidget {
   const FacilPage({super.key});
@@ -9,6 +13,86 @@ class FacilPage extends StatefulWidget {
 
 class _FacilPageState extends State<FacilPage> {
   String _estado = "";
+  String _numero = "";
+  final List<Object> _resultados = [];
+
+  void _sortearNumero() {
+    String v1, v2, v3;
+    do {
+      v1 = (Random().nextInt(10)).toString();
+      v2 = (Random().nextInt(10)).toString();
+      v3 = (Random().nextInt(10)).toString();
+    } while (v1 == v2 || v1 == v3 || v2 == v3);
+    _numero = v1 + v2 + v3;
+
+    print(_numero);
+  }
+
+  @override
+  void initState() {
+    _sortearNumero();
+    super.initState();
+  }
+
+  void _reiniciar() {
+    setState(() {
+      _estado = "";
+      _sortearNumero();
+      _resultados.clear();
+      Navigator.of(context).pop();
+    });
+  }
+
+  void _compararNumeros() {
+    final e1 = _estado[0];
+    final e2 = _estado[1];
+    final e3 = _estado[2];
+
+    final n1 = _numero.isNotEmpty ? _numero[0] : '';
+    final n2 = _numero.length > 1 ? _numero[1] : '';
+    final n3 = _numero.length > 2 ? _numero[2] : '';
+
+    int iguais = 0;
+    int posicaoDiferente = 0;
+
+    if (e1 == n1) {
+      iguais++;
+    } else if (e1 == n2) {
+      posicaoDiferente++;
+    } else if (e1 == n3) {
+      posicaoDiferente++;
+    }
+
+    if (e2 == n2) {
+      iguais++;
+    } else if (e2 == n1) {
+      posicaoDiferente++;
+    } else if (e2 == n3) {
+      posicaoDiferente++;
+    }
+
+    if (e3 == n3) {
+      iguais++;
+    } else if (e3 == n1) {
+      posicaoDiferente++;
+    } else if (e3 == n2) {
+      posicaoDiferente++;
+    }
+
+    setState(() {
+      _resultados.add({
+        "valor": _estado,
+        "iguais": iguais,
+        "posicaoDiferente": posicaoDiferente,
+      });
+
+      _estado = "";
+    });
+
+    if (iguais == 3) {
+      _dialogBuilder(context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,99 +104,33 @@ class _FacilPageState extends State<FacilPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _estado += "1";
-                  });
-                },
-                child: const Text("1"),
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _estado += "2";
-                  });
-                },
-                child: const Text("2"),
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _estado += "3";
-                  });
-                },
-                child: const Text("3"),
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _estado += "4";
-                  });
-                },
-                child: const Text("4"),
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _estado += "5";
-                  });
-                },
-                child: const Text("5"),
-              ),
+              TextButtonCustom("1"),
+              TextButtonCustom("2"),
+              TextButtonCustom("3"),
+              TextButtonCustom("4"),
+              TextButtonCustom("5"),
             ],
           ),
         if (_estado.length <= 2)
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _estado += "6";
-                  });
-                },
-                child: const Text("6"),
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _estado += "7";
-                  });
-                },
-                child: const Text("7"),
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _estado += "8";
-                  });
-                },
-                child: const Text("8"),
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _estado += "9";
-                  });
-                },
-                child: const Text("9"),
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _estado += "0";
-                  });
-                },
-                child: const Text("0"),
-              ),
+              TextButtonCustom("6"),
+              TextButtonCustom("7"),
+              TextButtonCustom("8"),
+              TextButtonCustom("9"),
+              TextButtonCustom("0"),
             ],
           ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             if (_estado.length == 3)
-              ElevatedButton(onPressed: () {}, child: const Text("Enviar")),
+              ElevatedButton(
+                  onPressed: () {
+                    _compararNumeros();
+                  },
+                  child: const Text("Enviar")),
             ElevatedButton(
               onPressed: () {
                 setState(() {
@@ -122,8 +140,77 @@ class _FacilPageState extends State<FacilPage> {
               child: const Text("limpar"),
             )
           ],
-        )
+        ),
+        if (_resultados.isNotEmpty)
+          Expanded(
+            child: Column(
+              children: [
+                const FacilResultTitle(),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: _resultados.length,
+                    itemBuilder: (context, index) {
+                      final item = _resultados[_resultados.length - 1 - index]
+                          as Map<String, dynamic>;
+                      return FacilResultItem(
+                        jogada: (_resultados.length - index).toString(),
+                        numeroProposto: item['valor'].toString(),
+                        iguais: item['iguais'].toString(),
+                        posicaoDiferente: item['posicaoDiferente'].toString(),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          )
       ],
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  TextButton TextButtonCustom(String text) {
+    if (_estado.isNotEmpty &&
+        (text == _estado[0] ||
+            (_estado.length > 1 && text == _estado[1]) ||
+            (_estado.length > 2 && text == _estado[2]))) {
+      return TextButton(onPressed: () {}, child: const Text(""));
+    }
+
+    return TextButton(
+        onPressed: () {
+          setState(() {
+            _estado += text;
+          });
+        },
+        child: Text(text,
+            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)));
+  }
+
+  Future<void> _dialogBuilder(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Parabéns, Você acertou!'),
+          content: Text(
+            'O valor do numero era $_numero \n\n'
+            'Você acertou em ${_resultados.length} tentativas',
+            style: const TextStyle(fontSize: 20),
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Voltar'),
+              onPressed: () {
+                _reiniciar();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
