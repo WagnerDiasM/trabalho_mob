@@ -124,12 +124,6 @@ class _FacilPageState extends State<FacilPage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            if (_estado.length == 3)
-              ElevatedButton(
-                  onPressed: () {
-                    _compararNumeros();
-                  },
-                  child: const Text("Enviar")),
             ElevatedButton(
               onPressed: () {
                 setState(() {
@@ -137,7 +131,21 @@ class _FacilPageState extends State<FacilPage> {
                 });
               },
               child: const Text("limpar"),
-            )
+            ),
+            if (_estado.length == 3)
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).primaryColor,
+                ),
+                onPressed: () {
+                  _compararNumeros();
+                },
+                child: Text(
+                  "Enviar",
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+                ),
+              ),
           ],
         ),
         if (_resultados.isNotEmpty)
