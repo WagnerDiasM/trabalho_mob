@@ -16,6 +16,10 @@ class RegrasPage extends StatelessWidget {
               context,
             ),
             cardRegras(
+              'O jogo consiste em adivinhar os números pré-ordenados, com múltiplas dificuldades:',
+              context,
+            ),
+            cardRegras(
               'Cada pré-ordenação contém apenas uma unidade de cada número, sendo assim, o mesmo número não se repetirá dentro da sequência.',
               context,
             ),
