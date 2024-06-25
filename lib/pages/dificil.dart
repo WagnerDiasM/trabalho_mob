@@ -23,16 +23,7 @@ class _DificilPageState extends State<DificilPage> {
       v3 = (Random().nextInt(10)).toString();
       v4 = (Random().nextInt(10)).toString();
       v5 = (Random().nextInt(10)).toString();
-    } while (v1 == v2 ||
-        v1 == v3 ||
-        v1 == v4 ||
-        v1 == v5 ||
-        v2 == v3 ||
-        v2 == v4 ||
-        v2 == v5 ||
-        v3 == v4 ||
-        v3 == v5 ||
-        v4 == v5);
+    } while (v1 == v2 || v1 == v3 || v1 == v4 || v1 == v5 || v2 == v3 || v2 == v4 || v2 == v5 || v3 == v4 || v3 == v5 || v4 == v5);
     _numero = v1 + v2 + v3 + v4 + v5;
   }
 
@@ -73,9 +64,9 @@ class _DificilPageState extends State<DificilPage> {
       posicaoDiferente++;
     } else if (e1 == n3) {
       posicaoDiferente++;
-    } else if (e1 == n4) {
+    }else if (e1 == n4) {
       posicaoDiferente++;
-    } else if (e1 == n5) {
+    }else if (e1 == n5) {
       posicaoDiferente++;
     }
 
@@ -85,9 +76,9 @@ class _DificilPageState extends State<DificilPage> {
       posicaoDiferente++;
     } else if (e2 == n3) {
       posicaoDiferente++;
-    } else if (e2 == n4) {
+    }else if (e2 == n4) {
       posicaoDiferente++;
-    } else if (e2 == n5) {
+    }else if (e2 == n5) {
       posicaoDiferente++;
     }
 
@@ -97,9 +88,9 @@ class _DificilPageState extends State<DificilPage> {
       posicaoDiferente++;
     } else if (e3 == n2) {
       posicaoDiferente++;
-    } else if (e3 == n4) {
+    }else if (e3 == n4) {
       posicaoDiferente++;
-    } else if (e3 == n5) {
+    }else if (e3 == n5) {
       posicaoDiferente++;
     }
 
@@ -109,9 +100,9 @@ class _DificilPageState extends State<DificilPage> {
       posicaoDiferente++;
     } else if (e4 == n2) {
       posicaoDiferente++;
-    } else if (e4 == n3) {
+    }else if (e4 == n3) {
       posicaoDiferente++;
-    } else if (e4 == n5) {
+    }else if (e4 == n5) {
       posicaoDiferente++;
     }
 
@@ -121,9 +112,9 @@ class _DificilPageState extends State<DificilPage> {
       posicaoDiferente++;
     } else if (e5 == n2) {
       posicaoDiferente++;
-    } else if (e5 == n3) {
+    }else if (e5 == n3) {
       posicaoDiferente++;
-    } else if (e5 == n4) {
+    }else if (e5 == n4) {
       posicaoDiferente++;
     }
 
@@ -208,7 +199,7 @@ class _DificilPageState extends State<DificilPage> {
                     itemBuilder: (context, index) {
                       final item = _resultados[_resultados.length - 1 - index]
                           as Map<String, dynamic>;
-                      return ResultItem(
+                      return FacilResultItem(
                         jogada: (_resultados.length - index).toString(),
                         numeroProposto: item['valor'].toString(),
                         iguais: item['iguais'].toString(),
@@ -268,3 +259,4 @@ class _DificilPageState extends State<DificilPage> {
     );
   }
 }
+

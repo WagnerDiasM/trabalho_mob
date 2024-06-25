@@ -22,8 +22,7 @@ class _MedioPageState extends State<MedioPage> {
       v2 = (Random().nextInt(10)).toString();
       v3 = (Random().nextInt(10)).toString();
       v4 = (Random().nextInt(10)).toString();
-    } while (
-        v1 == v2 || v1 == v3 || v1 == v4 || v2 == v3 || v2 == v4 || v3 == v4);
+    } while (v1 == v2 || v1 == v3 || v1 == v4 || v2 == v3 || v2 == v4 || v3 == v4);
     _numero = v1 + v2 + v3 + v4;
   }
 
@@ -62,7 +61,7 @@ class _MedioPageState extends State<MedioPage> {
       posicaoDiferente++;
     } else if (e1 == n3) {
       posicaoDiferente++;
-    } else if (e1 == n4) {
+    }else if (e1 == n4) {
       posicaoDiferente++;
     }
 
@@ -72,7 +71,7 @@ class _MedioPageState extends State<MedioPage> {
       posicaoDiferente++;
     } else if (e2 == n3) {
       posicaoDiferente++;
-    } else if (e2 == n4) {
+    }else if (e2 == n4) {
       posicaoDiferente++;
     }
 
@@ -82,7 +81,7 @@ class _MedioPageState extends State<MedioPage> {
       posicaoDiferente++;
     } else if (e3 == n2) {
       posicaoDiferente++;
-    } else if (e3 == n4) {
+    }else if (e3 == n4) {
       posicaoDiferente++;
     }
 
@@ -92,7 +91,7 @@ class _MedioPageState extends State<MedioPage> {
       posicaoDiferente++;
     } else if (e4 == n2) {
       posicaoDiferente++;
-    } else if (e4 == n3) {
+    }else if (e4 == n3) {
       posicaoDiferente++;
     }
 
@@ -177,7 +176,7 @@ class _MedioPageState extends State<MedioPage> {
                     itemBuilder: (context, index) {
                       final item = _resultados[_resultados.length - 1 - index]
                           as Map<String, dynamic>;
-                      return ResultItem(
+                      return FacilResultItem(
                         jogada: (_resultados.length - index).toString(),
                         numeroProposto: item['valor'].toString(),
                         iguais: item['iguais'].toString(),
@@ -237,3 +236,4 @@ class _MedioPageState extends State<MedioPage> {
     );
   }
 }
+

@@ -157,7 +157,7 @@ class _FacilPageState extends State<FacilPage> {
                     itemBuilder: (context, index) {
                       final item = _resultados[_resultados.length - 1 - index]
                           as Map<String, dynamic>;
-                      return ResultItem(
+                      return FacilResultItem(
                         jogada: (_resultados.length - index).toString(),
                         numeroProposto: item['valor'].toString(),
                         iguais: item['iguais'].toString(),
