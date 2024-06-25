@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FacilResultTitle extends StatelessWidget {
-  const FacilResultTitle({super.key});
+class ResultTitle extends StatelessWidget {
+  const ResultTitle({super.key});
 
   @override
   Widget build(BuildContext context) {

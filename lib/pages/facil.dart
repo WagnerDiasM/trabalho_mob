@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:trabalho_mob/components/facil_result.dart';
+import 'package:trabalho_mob/components/result.dart';
 
 class FacilPage extends StatefulWidget {
   const FacilPage({super.key});
@@ -23,8 +23,6 @@ class _FacilPageState extends State<FacilPage> {
       v3 = (Random().nextInt(10)).toString();
     } while (v1 == v2 || v1 == v3 || v2 == v3);
     _numero = v1 + v2 + v3;
-
-    print(_numero);
   }
 
   @override
@@ -152,7 +150,7 @@ class _FacilPageState extends State<FacilPage> {
           Expanded(
             child: Column(
               children: [
-                const FacilResultTitle(),
+                const ResultTitle(),
                 Expanded(
                   child: ListView.builder(
                     itemCount: _resultados.length,

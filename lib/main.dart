@@ -30,18 +30,41 @@ class BottomNavigationBarExample extends StatefulWidget {
 
 class _BottomNavigationBarExampleState
     extends State<BottomNavigationBarExample> {
-  int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    // Páginas para cada ícone
-    FacilPage(),
-    MedioPage(),
-    DificilPage(),
-    RegrasPage(),
-  ];
+
+    int _selectedScreenIndex = 0;
+
+  List<Map<String, Object>> _screens = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      {
+        'title': 'Facil',
+        'screen': FacilPage(),
+        'color': Colors.green
+      },
+      {
+        'title': 'Médio',
+        'screen': MedioPage(),
+        'color': Colors.yellow
+      },
+      {
+        'title': 'Dificil',
+        'screen': DificilPage(),
+        'color': Colors.red
+      },
+      {
+        'title': 'Regras',
+        'screen': RegrasPage(),
+        'color': Colors.grey
+      },
+    ];
+  }
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      _selectedScreenIndex = index;
     });
   }
 
@@ -49,25 +72,32 @@ class _BottomNavigationBarExampleState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Jogo sem nome'),
+        centerTitle: true,
+        title: Text(_screens[_selectedScreenIndex]['title'] as String,
+          style: const TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold
+          ),
+        ),
+        backgroundColor: _screens[_selectedScreenIndex]['color'] as Color,
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: _screens[_selectedScreenIndex]['screen'] as Widget,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           const BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.numbers),
             label: 'Fácil',
             backgroundColor: Colors.green,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.business),
+            icon: const Icon(Icons.numbers),
             label: 'Médio',
             backgroundColor: Colors.yellow[700],
           ),
           const BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(Icons.numbers),
             label: 'Difícil',
             backgroundColor: Colors.red,
           ),
@@ -77,7 +107,7 @@ class _BottomNavigationBarExampleState
             backgroundColor: Colors.grey[600],
           ),
         ],
-        currentIndex: _selectedIndex,
+        currentIndex: _selectedScreenIndex,
         selectedItemColor: Colors.black.withOpacity(0.8),
         onTap: _onItemTapped,
       ),
