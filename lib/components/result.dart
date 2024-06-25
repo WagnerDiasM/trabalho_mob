@@ -80,13 +80,13 @@ class ResultTitle extends StatelessWidget {
   }
 }
 
-class FacilResultItem extends StatelessWidget {
+class ResultItem extends StatelessWidget {
   final String jogada;
   final String numeroProposto;
   final String iguais;
   final String posicaoDiferente;
 
-  const FacilResultItem(
+  const ResultItem(
       {super.key,
       required this.jogada,
       required this.numeroProposto,
