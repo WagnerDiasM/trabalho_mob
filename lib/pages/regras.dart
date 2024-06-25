@@ -12,23 +12,23 @@ class RegrasPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(children: [
             cardRegras(
-              'O jogo consiste em em adivinhar os nmeros pré-ordenados, com multiplas dificuldades:\n\n*Facil - 3 nmeros \n*Médio - 4 nmeros \n*Dificil - 5 nmeros',
+              'O jogo consiste em adivinhar os números pré-ordenados, com múltiplas dificuldades:\n\n*Fácil - 3 números \n*Médio - 4 números \n*Difícil - 5 números',
               context,
             ),
             cardRegras(
-              'O jogo consiste em em adivinhar os nmeros pré-ordenados, com multiplas dificuldades:',
+              'O jogo consiste em adivinhar os números pré-ordenados, com múltiplas dificuldades:',
               context,
             ),
             cardRegras(
-              'Cada pré-ordenação contém apenas uma unidade de cada nmero, sendo assim, o mesmo nmero não se repetirá dentro da sequência.',
+              'Cada pré-ordenação contém apenas uma unidade de cada número, sendo assim, o mesmo número não se repetirá dentro da sequência.',
               context,
             ),
             cardRegras(
-              'Ao montar uma sequência de nmeros e enviá-la, sua pontuação será exibida no campo inferior da tela.\n Com base nela, você poderá montar outra sequência que se aproxime ainda mais da sequência pré-ordenada.',
+              'Ao montar uma sequência de números e enviá-la, sua pontuação será exibida no campo inferior da tela.\n Com base nela, você poderá montar outra sequência que se aproxime ainda mais da sequência pré-ordenada.',
               context,
             ),
             cardRegras(
-              'Por fim, quando a sequência pré-ordenada for descoberta, será exibida a quantidade de tentativas feitas para chegar ao resultado, reiniciando o jogo com outra pré-ordenação de nmeros.',
+              'Por fim, quando a sequência pré-ordenada for descoberta, será exibida a quantidade de tentativas feitas para chegar ao resultado, reiniciando o jogo com outra pré-ordenação de números.',
               context,
             ),
             const SizedBox(height: 15),
