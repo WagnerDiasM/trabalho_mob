@@ -218,11 +218,7 @@ class _DificilPageState extends State<DificilPage> {
   // ignore: non_constant_identifier_names
   TextButton TextButtonCustom(String text) {
     if (_estado.isNotEmpty &&
-        (text == _estado[0] ||
-            (_estado.length > 1 && text == _estado[1]) ||
-            (_estado.length > 2 && text == _estado[2]) ||
-            (_estado.length > 3 && text == _estado[3]) ||
-            (_estado.length > 4 && text == _estado[4]))) {
+        (text == _estado[0] || text == _estado[1] || text == _estado[2] || text == _estado[3] || text == _estado[4])) {
       return TextButton(onPressed: () {}, child: const Text(""));
     }
 

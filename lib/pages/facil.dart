@@ -176,9 +176,7 @@ class _FacilPageState extends State<FacilPage> {
   // ignore: non_constant_identifier_names
   TextButton TextButtonCustom(String text) {
     if (_estado.isNotEmpty &&
-        (text == _estado[0] ||
-            (_estado.length > 1 && text == _estado[1]) ||
-            (_estado.length > 2 && text == _estado[2]))) {
+        (text == _estado[0] || text == _estado[1] || text == _estado[2])) {
       return TextButton(onPressed: () {}, child: const Text(""));
     }
 
