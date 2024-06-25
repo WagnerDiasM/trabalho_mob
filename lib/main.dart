@@ -30,8 +30,7 @@ class BottomNavigationBarExample extends StatefulWidget {
 
 class _BottomNavigationBarExampleState
     extends State<BottomNavigationBarExample> {
-
-    int _selectedScreenIndex = 0;
+  int _selectedScreenIndex = 0;
 
   List<Map<String, Object>> _screens = [];
 
@@ -41,23 +40,23 @@ class _BottomNavigationBarExampleState
     _screens = [
       {
         'title': 'Facil',
-        'screen': FacilPage(),
-        'color': Colors.green
+        'screen': const FacilPage(),
+        'color': Colors.green as Object
       },
       {
         'title': 'Médio',
-        'screen': MedioPage(),
-        'color': Colors.yellow
+        'screen': const MedioPage(),
+        'color': Colors.yellow[700] as Object
       },
       {
         'title': 'Dificil',
-        'screen': DificilPage(),
-        'color': Colors.red
+        'screen': const DificilPage(),
+        'color': Colors.red as Object
       },
       {
         'title': 'Regras',
-        'screen': RegrasPage(),
-        'color': Colors.grey
+        'screen': const RegrasPage(),
+        'color': Colors.deepPurple
       },
     ];
   }
@@ -73,10 +72,12 @@ class _BottomNavigationBarExampleState
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(_screens[_selectedScreenIndex]['title'] as String,
+        title: Text(
+          _screens[_selectedScreenIndex]['title'] as String,
           style: const TextStyle(
             fontSize: 25,
-            fontWeight: FontWeight.bold
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
         ),
         backgroundColor: _screens[_selectedScreenIndex]['color'] as Color,
@@ -101,10 +102,10 @@ class _BottomNavigationBarExampleState
             label: 'Difícil',
             backgroundColor: Colors.red,
           ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.settings),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
             label: 'Regras',
-            backgroundColor: Colors.grey[600],
+            backgroundColor: Colors.deepPurple,
           ),
         ],
         currentIndex: _selectedScreenIndex,
