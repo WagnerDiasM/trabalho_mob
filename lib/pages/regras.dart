@@ -31,7 +31,7 @@ class RegrasPage extends StatelessWidget {
               'Por fim, quando a sequência pré-ordenada for descoberta, será exibida a quantidade de tentativas feitas para chegar ao resultado, reiniciando o jogo com outra pré-ordenação de nmeros.',
               context,
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 15),
           ]),
         ),
       ),
@@ -50,7 +50,10 @@ class RegrasPage extends StatelessWidget {
           children: [
             Text(
               text,
-              style: const TextStyle(fontSize: 20),
+              textAlign: TextAlign.justify,
+              style: const TextStyle(
+                fontSize: 18,
+              ),
             ),
           ],
         ),
