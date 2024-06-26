@@ -157,7 +157,7 @@ class _FacilPageState extends State<FacilPage> {
                     itemBuilder: (context, index) {
                       final item = _resultados[_resultados.length - 1 - index]
                           as Map<String, dynamic>;
-                      return FacilResultItem(
+                      return ResultItem(
                         jogada: (_resultados.length - index).toString(),
                         numeroProposto: item['valor'].toString(),
                         iguais: item['iguais'].toString(),
@@ -176,7 +176,9 @@ class _FacilPageState extends State<FacilPage> {
   // ignore: non_constant_identifier_names
   TextButton TextButtonCustom(String text) {
     if (_estado.isNotEmpty &&
-        (text == _estado[0] || text == _estado[1] || text == _estado[2])) {
+        (text == _estado[0] ||
+            (_estado.length > 1 && text == _estado[1]) ||
+            (_estado.length > 2 && text == _estado[2]))) {
       return TextButton(onPressed: () {}, child: const Text(""));
     }
 
